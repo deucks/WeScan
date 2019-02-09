@@ -266,10 +266,10 @@ final class ScannerViewController: UIViewController {
         }
     }
     
-    @objc private func cancelImageScannerController() {
-        guard let imageScannerController = navigationController as? ImageScannerController else { return }
-        imageScannerController.imageScannerDelegate?.imageScannerControllerDidCancel(imageScannerController)
-    }
+//    @objc private func cancelImageScannerController() {
+//        guard let imageScannerController = navigationController as? ImageScannerController else { return }
+//        imageScannerController.imageScannerDelegate?.imageScannerControllerDidCancel(imageScannerController)
+//    }
     
 }
 
