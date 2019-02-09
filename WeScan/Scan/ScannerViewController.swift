@@ -35,13 +35,6 @@ final class ScannerViewController: UIViewController {
         return button
     }()
     
-    lazy private var cancelButton: UIButton = {
-        let button = UIButton()
-        button.setTitle(NSLocalizedString("wescan.scanning.cancel", tableName: nil, bundle: Bundle(for: ScannerViewController.self), value: "Cancel", comment: "The cancel button"), for: .normal)
-        button.translatesAutoresizingMaskIntoConstraints = false
-        button.addTarget(self, action: #selector(cancelImageScannerController), for: .touchUpInside)
-        return button
-    }()
     
     lazy private var toolbar: UIToolbar = {
         let toolbar = UIToolbar()
@@ -117,7 +110,6 @@ final class ScannerViewController: UIViewController {
         quadView.translatesAutoresizingMaskIntoConstraints = false
         quadView.editable = false
         view.addSubview(quadView)
-        //view.addSubview(cancelButton)
         view.addSubview(shutterButton)
         view.addSubview(activityIndicator)
         view.addSubview(toolbar)
@@ -138,7 +130,6 @@ final class ScannerViewController: UIViewController {
     private func setupConstraints() {
         var toolbarConstraints = [NSLayoutConstraint]()
         var quadViewConstraints = [NSLayoutConstraint]()
-        var cancelButtonConstraints = [NSLayoutConstraint]()
         var shutterButtonConstraints = [NSLayoutConstraint]()
         var activityIndicatorConstraints = [NSLayoutConstraint]()
         
@@ -174,10 +165,7 @@ final class ScannerViewController: UIViewController {
                 toolbarConstraints.append(toolbar.heightAnchor.constraint(equalToConstant: safeAreaInsets.top + 44.0))
             }
             
-            cancelButtonConstraints = [
-                cancelButton.leftAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leftAnchor, constant: 24.0),
-                view.safeAreaLayoutGuide.bottomAnchor.constraint(equalTo: cancelButton.bottomAnchor, constant: (65.0 / 2) - 10.0)
-            ]
+
             
             let shutterButtonBottomConstraint = view.safeAreaLayoutGuide.bottomAnchor.constraint(equalTo: shutterButton.bottomAnchor, constant: 8.0)
             shutterButtonConstraints.append(shutterButtonBottomConstraint)
@@ -189,16 +177,13 @@ final class ScannerViewController: UIViewController {
                 toolbar.topAnchor.constraint(equalTo: view.topAnchor)
             ]
             
-            cancelButtonConstraints = [
-                cancelButton.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 24.0),
-                view.bottomAnchor.constraint(equalTo: cancelButton.bottomAnchor, constant: (65.0 / 2) - 10.0)
-            ]
+
             
             let shutterButtonBottomConstraint = view.bottomAnchor.constraint(equalTo: shutterButton.bottomAnchor, constant: 8.0)
             shutterButtonConstraints.append(shutterButtonBottomConstraint)
         }
         
-        NSLayoutConstraint.activate(quadViewConstraints + cancelButtonConstraints + shutterButtonConstraints + activityIndicatorConstraints + toolbarConstraints)
+        NSLayoutConstraint.activate(quadViewConstraints + shutterButtonConstraints + activityIndicatorConstraints + toolbarConstraints)
     }
     
     // MARK: - Tap to Focus
