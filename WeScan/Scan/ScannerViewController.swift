@@ -40,13 +40,26 @@ final class ScannerViewController: UIViewController {
         let toolbar = UIToolbar()
         toolbar.barStyle = .default
         toolbar.tintColor = .black
+        toolbar.isTranslucent = true
         toolbar.barTintColor = UIColor.clear
+        
         toolbar.translatesAutoresizingMaskIntoConstraints = false
         return toolbar
     }()
     
     lazy private var autoScanButton: UIBarButtonItem = {
-        return UIBarButtonItem(title: NSLocalizedString("wescan.scanning.auto", tableName: nil, bundle: Bundle(for: ScannerViewController.self), value: "Autobb", comment: "The auto button state"), style: .plain, target: self, action: #selector(toggleAutoScan))
+        return UIBarButtonItem(title: NSLocalizedString("wescan.scanning.auto", tableName: nil, bundle: Bundle(for: ScannerViewController.self), value: "Auto", comment: "The auto button state"), style: .plain, target: self, action: #selector(toggleAutoScan))
+    }()
+    
+    private var autoScanNonToolbar: UIButton = {
+       
+        var button = UIButton()
+        button.setTitle("Button Title", for: [.normal])
+        button.addTarget(self, action: #selector(toggleAutoScan), for: .touchUpInside)
+        button.tintColor = UIColor.white
+        button.frame = CGRect(x:0, y:0, width:100, height: 100)
+        return button
+        
     }()
     
     lazy private var flashButton: UIBarButtonItem = {
@@ -113,7 +126,9 @@ final class ScannerViewController: UIViewController {
         view.addSubview(quadView)
         view.addSubview(shutterButton)
         view.addSubview(activityIndicator)
+
         view.addSubview(toolbar)
+        view.addSubview(autoScanNonToolbar)
     }
     
     private func setupToolbar() {
@@ -168,7 +183,7 @@ final class ScannerViewController: UIViewController {
             
 
             
-            let shutterButtonBottomConstraint = view.safeAreaLayoutGuide.bottomAnchor.constraint(equalTo: shutterButton.bottomAnchor, constant: 8.0)
+            let shutterButtonBottomConstraint = view.safeAreaLayoutGuide.bottomAnchor.constraint(equalTo: shutterButton.bottomAnchor, constant: 150.0)
             shutterButtonConstraints.append(shutterButtonBottomConstraint)
         } else {
             toolbarConstraints = [
@@ -180,7 +195,7 @@ final class ScannerViewController: UIViewController {
             
 
             
-            let shutterButtonBottomConstraint = view.bottomAnchor.constraint(equalTo: shutterButton.bottomAnchor, constant: 8.0)
+            let shutterButtonBottomConstraint = view.bottomAnchor.constraint(equalTo: shutterButton.bottomAnchor, constant: 150.0)
             shutterButtonConstraints.append(shutterButtonBottomConstraint)
         }
         
