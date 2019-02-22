@@ -46,7 +46,7 @@ final class ScannerViewController: UIViewController {
     }()
     
     lazy private var autoScanButton: UIBarButtonItem = {
-        return UIBarButtonItem(title: NSLocalizedString("wescan.scanning.auto", tableName: nil, bundle: Bundle(for: ScannerViewController.self), value: "Auto", comment: "The auto button state"), style: .plain, target: self, action: #selector(toggleAutoScan))
+        return UIBarButtonItem(title: NSLocalizedString("wescan.scanning.auto", tableName: nil, bundle: Bundle(for: ScannerViewController.self), value: "Autobb", comment: "The auto button state"), style: .plain, target: self, action: #selector(toggleAutoScan))
     }()
     
     lazy private var flashButton: UIBarButtonItem = {
