@@ -20,5 +20,5 @@
 
 /* The button titles on the Scanning screen. */
 "wescan.scanning.cancel" = "Cancel";
-"wescan.scanning.auto" = "Auto";
-"wescan.scanning.manual" = "Manual";
+"wescan.scanning.auto" = "Autobb";
+"wescan.scanning.manual" = "Manualbb";
