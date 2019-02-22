@@ -38,8 +38,9 @@ final class ScannerViewController: UIViewController {
     
     lazy private var toolbar: UIToolbar = {
         let toolbar = UIToolbar()
-        toolbar.barStyle = .blackTranslucent
+        toolbar.barStyle = .default
         toolbar.tintColor = .white
+        toolbar.barTintColor = UIColor.clear
         toolbar.translatesAutoresizingMaskIntoConstraints = false
         return toolbar
     }()
