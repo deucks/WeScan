@@ -217,7 +217,7 @@ final class ScannerViewController: UIViewController {
             
 
             
-            let shutterButtonBottomConstraint = view.safeAreaLayoutGuide.bottomAnchor.constraint(equalTo: shutterButton.bottomAnchor, constant: 150.0)
+            let shutterButtonBottomConstraint = view.safeAreaLayoutGuide.bottomAnchor.constraint(equalTo: shutterButton.bottomAnchor, constant: 160.0)
             shutterButtonConstraints.append(shutterButtonBottomConstraint)
         } else {
             toolbarConstraints = [
@@ -229,7 +229,7 @@ final class ScannerViewController: UIViewController {
             
 
             
-            let shutterButtonBottomConstraint = view.bottomAnchor.constraint(equalTo: shutterButton.bottomAnchor, constant: 150.0)
+            let shutterButtonBottomConstraint = view.bottomAnchor.constraint(equalTo: shutterButton.bottomAnchor, constant: 160.0)
             shutterButtonConstraints.append(shutterButtonBottomConstraint)
         }
         
