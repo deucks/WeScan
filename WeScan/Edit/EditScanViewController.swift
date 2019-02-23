@@ -73,6 +73,11 @@ final class EditScanViewController: UIViewController {
         let touchDown = UILongPressGestureRecognizer(target: zoomGestureController, action: #selector(zoomGestureController.handle(pan:)))
         touchDown.minimumPressDuration = 0
         view.addGestureRecognizer(touchDown)
+        
+        //Send a call to the Recibo Delgate that edit scan has been opened
+        if let imageScannerController = navigationController as? ImageScannerController {
+            imageScannerController.imageScannerDelegate?.editControllerOpened()
+        }
     }
     
     override func viewDidLayoutSubviews() {

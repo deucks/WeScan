@@ -141,6 +141,10 @@ extension HomeViewController: ImageScannerControllerDelegate {
         scanner.dismiss(animated: true, completion: nil)
     }
     
+    func editControllerOpened(){
+        print("Edit controller opened")
+    }
+    
 }
 
 extension HomeViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {

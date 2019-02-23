@@ -33,6 +33,9 @@ public protocol ImageScannerControllerDelegate: NSObjectProtocol {
     ///   - scanner: The scanner controller object managing the scanning interface.
     ///   - error: The error that occured.
     func imageScannerController(_ scanner: ImageScannerController, didFailWithError error: Error)
+    
+    //Functions to check where the this WeScan app state is. This delegate function will be called when edit controller is previewd.
+    func editControllerOpened()
 }
 
 /// A view controller that manages the full flow for scanning documents.
