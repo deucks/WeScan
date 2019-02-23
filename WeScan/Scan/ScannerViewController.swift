@@ -148,6 +148,7 @@ final class ScannerViewController: UIViewController {
         var quadViewConstraints = [NSLayoutConstraint]()
         var shutterButtonConstraints = [NSLayoutConstraint]()
         var activityIndicatorConstraints = [NSLayoutConstraint]()
+        var flashButtonConstraints = [NSLayoutConstraint]()
         
         quadViewConstraints = [
             quadView.topAnchor.constraint(equalTo: view.topAnchor),
@@ -165,6 +166,11 @@ final class ScannerViewController: UIViewController {
         activityIndicatorConstraints = [
             activityIndicator.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             activityIndicator.centerYAnchor.constraint(equalTo: view.centerYAnchor)
+        ]
+        
+        flashButtonConstraints = [
+            autoScanNonToolbar.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            autoScanNonToolbar.topAnchor.constraint(equalTo: view.topAnchor)
         ]
         
         if #available(iOS 11.0, *) {
@@ -199,7 +205,7 @@ final class ScannerViewController: UIViewController {
             shutterButtonConstraints.append(shutterButtonBottomConstraint)
         }
         
-        NSLayoutConstraint.activate(quadViewConstraints + shutterButtonConstraints + activityIndicatorConstraints + toolbarConstraints)
+        NSLayoutConstraint.activate(quadViewConstraints + shutterButtonConstraints + activityIndicatorConstraints + toolbarConstraints + flashButtonConstraints)
     }
     
     // MARK: - Tap to Focus
