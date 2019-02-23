@@ -85,7 +85,7 @@ final class ScannerViewController: UIViewController {
         setupViews()
         setupToolbar()
         setupConstraints()
-        
+        //setupVisualConstraints()
         captureSessionManager = CaptureSessionManager(videoPreviewLayer: videoPreviewLayer)
         captureSessionManager?.delegate = self
         
@@ -143,12 +143,29 @@ final class ScannerViewController: UIViewController {
         }
     }
     
+    private func setupVisualConstraints(){
+        activityIndicator.translatesAutoresizingMaskIntoConstraints = true
+        let views = ["autoScanNonToolbar":autoScanNonToolbar]
+        let horizonCons = NSLayoutConstraint.constraints(withVisualFormat: "H:[autoScanNonToolbar]", options: .alignAllCenterY, metrics: nil, views: views)
+
+        //self.shutterButton.addConstraint(c)
+        
+        
+        
+        let verticalCons = NSLayoutConstraint.constraints(withVisualFormat: "V:[autoScanNonToolbar]-150-|", metrics: nil, views: views)
+        NSLayoutConstraint.activate(horizonCons)
+        NSLayoutConstraint.activate(verticalCons)
+        
+    }
+    
     private func setupConstraints() {
         var toolbarConstraints = [NSLayoutConstraint]()
         var quadViewConstraints = [NSLayoutConstraint]()
         var shutterButtonConstraints = [NSLayoutConstraint]()
         var activityIndicatorConstraints = [NSLayoutConstraint]()
         var flashButtonConstraints = [NSLayoutConstraint]()
+        
+        autoScanNonToolbar.translatesAutoresizingMaskIntoConstraints = false
         
         quadViewConstraints = [
             quadView.topAnchor.constraint(equalTo: view.topAnchor),
@@ -169,9 +186,12 @@ final class ScannerViewController: UIViewController {
         ]
         
         flashButtonConstraints = [
-            autoScanNonToolbar.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            autoScanNonToolbar.topAnchor.constraint(equalTo: view.topAnchor)
+            //autoScanNonToolbar.centerXAnchor.constraint(equalTo: view.centerXAnchor)
+            autoScanNonToolbar.leadingAnchor.constraint(equalTo: shutterButton.trailingAnchor, constant:20),
+            autoScanNonToolbar.centerYAnchor.constraint(equalTo: shutterButton.centerYAnchor),
+            //autoScanNonToolbar.topAnchor.constraint(equalTo: shutterButton.topAnchor, constant: 32.5)
         ]
+ 
         
         if #available(iOS 11.0, *) {
             let window = UIApplication.shared.keyWindow
@@ -182,6 +202,7 @@ final class ScannerViewController: UIViewController {
                 toolbar.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
                 toolbar.topAnchor.constraint(equalTo: view.topAnchor)
             ]
+            
             
             if let safeAreaInsets = window?.safeAreaInsets {
                 toolbarConstraints.append(toolbar.heightAnchor.constraint(equalToConstant: safeAreaInsets.top + 44.0))
