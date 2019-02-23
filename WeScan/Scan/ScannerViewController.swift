@@ -67,6 +67,7 @@ final class ScannerViewController: UIViewController {
         let flashButton = UIBarButtonItem(image: flashImage, style: .plain, target: self, action: #selector(toggleFlash))
         return flashButton
     }()
+
     
     lazy private var activityIndicator: UIActivityIndicatorView = {
         let activityIndicator = UIActivityIndicatorView(style: .gray)
@@ -127,7 +128,7 @@ final class ScannerViewController: UIViewController {
         view.addSubview(shutterButton)
         view.addSubview(activityIndicator)
 
-        view.addSubview(toolbar)
+        //view.addSubview(toolbar)
         view.addSubview(autoScanNonToolbar)
     }
     
@@ -226,7 +227,7 @@ final class ScannerViewController: UIViewController {
             shutterButtonConstraints.append(shutterButtonBottomConstraint)
         }
         
-        NSLayoutConstraint.activate(quadViewConstraints + shutterButtonConstraints + activityIndicatorConstraints + toolbarConstraints + flashButtonConstraints)
+        NSLayoutConstraint.activate(quadViewConstraints + shutterButtonConstraints + activityIndicatorConstraints + flashButtonConstraints)
     }
     
     // MARK: - Tap to Focus
