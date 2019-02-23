@@ -36,6 +36,9 @@ public protocol ImageScannerControllerDelegate: NSObjectProtocol {
     
     //Functions to check where the this WeScan app state is. This delegate function will be called when edit controller is previewd.
     func editControllerOpened()
+    
+    //Call this function when the scan controller is opened again
+    func scanControllerOpened()
 }
 
 /// A view controller that manages the full flow for scanning documents.

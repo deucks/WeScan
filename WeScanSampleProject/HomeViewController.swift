@@ -129,6 +129,10 @@ final class HomeViewController: UIViewController {
 }
 
 extension HomeViewController: ImageScannerControllerDelegate {
+    func scanControllerOpened() {
+        print("Scan controller opened")
+    }
+    
     func imageScannerController(_ scanner: ImageScannerController, didFailWithError error: Error) {
         print(error)
     }

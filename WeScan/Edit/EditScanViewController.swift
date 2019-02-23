@@ -75,6 +75,11 @@ final class EditScanViewController: UIViewController {
         view.addGestureRecognizer(touchDown)
         
         //Send a call to the Recibo Delgate that edit scan has been opened
+
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        //Tell the delagate the view is now open
         if let imageScannerController = navigationController as? ImageScannerController {
             imageScannerController.imageScannerDelegate?.editControllerOpened()
         }

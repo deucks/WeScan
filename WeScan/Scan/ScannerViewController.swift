@@ -100,6 +100,12 @@ final class ScannerViewController: UIViewController {
         captureSessionManager?.start()
         UIApplication.shared.isIdleTimerDisabled = true
         navigationController?.setNavigationBarHidden(true, animated: false)
+        
+        //Call the delegate to say the view is opened
+        //Send a call to the Recibo Delgate that edit scan has been opened
+        if let imageScannerController = navigationController as? ImageScannerController {
+            imageScannerController.imageScannerDelegate?.scanControllerOpened()
+        }
     }
     
     override func viewDidLayoutSubviews() {
